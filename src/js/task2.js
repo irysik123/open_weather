@@ -55,3 +55,57 @@ console.log(palindrom("Olololo")) */
 console.log(buildFun(3))
 
 console.log(buildFun(3)[0]()) */
+
+
+/* function lastSurvivor(letters, coords) {
+    letters = letters.split("")
+    coords.forEach((index) => {
+      letters.splice(index, 1)
+    })
+    return letters.toString()
+  }
+
+  console.log(lastSurvivor("abc",[0,1])) */
+
+/*   function duplicateCount(text){
+    text = text.toLowerCase()
+     text = text.split('')
+     let result = 0
+     for(let i=0; i<text.length;i+=1) {
+       if(text.includes(text[i])) {
+         result+=1
+         console.log(i,result)
+       } else {
+        return 
+       }
+     }
+     return result
+   } */
+
+   function hasSurvived(attackers, defenders) {
+     let survivors = 0;
+     let attSurvivors = 0;
+     defenders.forEach((i, index) => {
+       if (i > attackers[index]) {
+         survivors += 1;
+       } else if (i < attackers[index]) {
+         attSurvivors += 1;
+       }
+     });
+
+     if (attackers.length !== defenders.length || survivors === attSurvivors) {
+       let attackersPower = attackers.reduce((acc, value) => acc + value, 0);
+       let defendersPower = defenders.reduce((acc, value) => acc + value, 0);
+       if (defendersPower >= attackersPower) {
+         return true;
+       } else {
+         return false;
+       }
+     }
+     if (survivors >= attSurvivors) {
+       return true;
+     } else {
+       return false;
+     }
+   }
+   console.log(hasSurvived([10, 10, 1, 1], [4, 4, 7, 7]));
